@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Store</title>
+    <link rel="stylesheet" href="mainpagestyle.css">
+    <script src="cartCount.js" defer></script>
+    <script src="mainpagejava.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Explore Our Collections</h2>
+        <p>Find the best clothing for you!</p>
+        <button onclick="window.location.href='shop.html'">Shop Now</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clothing Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Load cart items from local storage
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Function to update cart count
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.textContent = cartItems.length; // Update cart count in the UI
+        }
+
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount(); // Call the function to set the initial cart count
+        });
+    </script>
+</body>
+</html>
