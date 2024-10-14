@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="mainpagestyle.css">
+    <script src="cartCount.js" defer></script>
+    <script src="shop.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Select Your Gender</h2>
+        <div class="gender-options">
+            <div class="option">
+                <h3>Men's Clothing</h3>
+                <p>Explore our collection of stylish men's wear.</p>
+                <button onclick="window.location.href='mens.html'">Shop Men's</button>
+            </div>
+            <div class="option">
+                <h3>Women's Clothing</h3>
+                <p>Discover the latest trends in women's fashion.</p>
+                <button onclick="window.location.href='womens.html'">Shop Women's</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clothing Store. All rights reserved.</p>
+    </footer>
+   <script>  // Initialize the page
+    window.onload = function() {
+        updateCartCount();
+    }
+        </script>
+</body>
+</html>

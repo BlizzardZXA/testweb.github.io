@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="mainpagestyle.css">
+    <script src="cartCount.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Your Cart Items</h2>
+        <div id="cart-items"></div>
+        <button id="clear-cart">Clear Cart</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clothing Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to display cart items
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cartItemsContainer.innerHTML = ''; // Clear previous items
+                cart.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                    cartItemsContainer.appendChild(div);
+                });
+            }
+        }
+
+        // Function to clear the cart
+        function clearCart() {
+            localStorage.removeItem('cartItems');
+            displayCartItems(); // Refresh display after clearing
+            alert('Your cart has been cleared.');
+        }
+
+        // Event listener for Clear Cart button
+        document.getElementById('clear-cart').addEventListener('click', clearCart);
+
+        // Initialize cart display on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCartItems();
+        });
+    </script>
+</body>
+</html>
